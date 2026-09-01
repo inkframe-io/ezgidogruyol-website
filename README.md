@@ -1,36 +1,128 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Personal Portfolio — Ezgi Doğruyol
 
-## Getting Started
+One-page portfolio for Ezgi Doğruyol, a mobile-games Product Manager. Pure-white,
+type-led design (in the lineage of tally.so / cal.com / excalidraw). Bilingual
+(EN / TR), no CMS — every string lives in one typed file (`src/content.ts`).
 
-First, run the development server:
+## Stack
+
+- **Next.js 16** (App Router) + **TypeScript**
+- **Tailwind CSS v4** (CSS-first config, no `tailwind.config`)
+- CSS keyframe entrance animations — respect `prefers-reduced-motion`
+- **sonner** — the "email copied" toast
+- **lucide-react** — icons; **next/image** — character / doodle / line art
+- Fonts: **Geist** + **Geist Mono** via `next/font` (self-hosted, zero network)
+- Light theme only
+
+## Quick start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm run build      # production build
+npm run start      # serve the build
+npm run lint       # eslint
+npx tsc --noEmit   # typecheck
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Runs with zero edits — it ships with realistic placeholder content.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Edit the content
 
-## Learn More
+**Everything editable is in [`src/content.ts`](src/content.ts).** No other file
+needs touching for a content change.
 
-To learn more about Next.js, take a look at the following resources:
+- Two locales: `en` and `tr`. They must keep the **same shape** — if you add a
+  timeline entry or a skill to one, add it to the other.
+- Every string is preceded by a `// GUIDE:` comment describing what belongs there.
+- Placeholder studios (`Northlight Games`, `Harbor & Pike Studio`,
+  `Meridian Interactive`) and all metrics are invented. Replace them. Keep impact
+  bullets in the "strong verb + a number" style.
+- Section count is flexible where it's an array (`work.featured`,
+  `work.timeline`, `beyond.items`, `skills.groups`, `references.items`) — copy a
+  block, keep the keys.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The TypeScript `SiteContent` interface at the top of the file is the contract; if
+`npx tsc --noEmit` passes, both locales are structurally complete.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Swap the CV
 
-## Deploy on Vercel
+Replace **`public/cv.pdf`** with your own file (keep the name). The "Download CV"
+buttons in the nav, hero, and footer all point at `meta.cvPath` in `content.ts` —
+change that path if you rename the file.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Change the two accent colors
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Both accents are CSS custom properties in
+[`src/app/globals.css`](src/app/globals.css), inside the `@theme` block:
+
+```css
+@theme {
+  --color-accent-pink: #e5006e;   /* section index, icons, squiggle, markers */
+  --color-accent-blue: #2563eb;   /* links, primary CTA, arrow doodle */
+}
+```
+
+Edit those two values — nothing else references raw hex. Tailwind regenerates the
+`text-accent-pink` / `bg-accent-blue` / `border-accent-*` utilities automatically.
+
+## Structure
+
+```
+src/
+  app/
+    layout.tsx            # fonts, metadata, <LocaleProvider>, skip-link, <Toaster>
+    page.tsx              # section order
+    globals.css           # design tokens + base styles
+  content.ts              # ← all copy, both locales, GUIDE comments
+  lib/
+    locale-context.tsx    # EN/TR store (localStorage, useSyncExternalStore)
+    motion.ts             # shared entrance variants
+    utils.ts              # cn()
+  components/
+    nav.tsx               # sticky nav, IntersectionObserver active state, mobile menu
+    section-heading.tsx   # "01 — ABOUT" eyebrow + heading
+    card.tsx              # hairline rounded card with accent icon
+    doodle.tsx            # <Squiggle> + <Arrow> hand-drawn SVGs
+    reveal.tsx            # entrance-animation wrappers (reduced-motion aware)
+    ui/                    # button, sonner
+    sections/             # hero, about, work, beyond, skills, references, footer
+public/
+  cv.pdf                  # ← replace with your CV
+```
+
+## Accessibility
+
+- Landmarks: `<header>` / `<main>` / `<footer>`; every section is
+  `aria-labelledby` its heading.
+- Skip-to-content link, visible on focus.
+- Global `:focus-visible` ring (accent-blue).
+- All external links use `target="_blank" rel="noopener noreferrer"`.
+- Icon-only controls have `aria-label`; decorative marks are `aria-hidden`.
+- Body text `#525252` on `#FFFFFF` is AA (7.4:1); accent-blue links are AA.
+
+## Deploy to Vercel
+
+1. Push this repo to GitHub / GitLab / Bitbucket.
+2. In [vercel.com](https://vercel.com) → **Add New → Project** → import the repo.
+3. Framework preset **Next.js** is auto-detected. No env vars, no build config.
+4. Deploy.
+
+Or from the CLI:
+
+```bash
+npm i -g vercel
+vercel          # preview
+vercel --prod   # production
+```
+
+Set `meta.siteUrl` in `content.ts` to your production URL so canonical / OG tags
+are correct.
+
+## License
+
+MIT — do what you like with it.
+# ezgidogruyol-website
