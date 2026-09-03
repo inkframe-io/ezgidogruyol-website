@@ -4,7 +4,6 @@ import { About } from "@/components/sections/about";
 import { Work } from "@/components/sections/work";
 import { Beyond } from "@/components/sections/beyond";
 import { Skills } from "@/components/sections/skills";
-import { References } from "@/components/sections/references";
 import { SiteFooter } from "@/components/sections/footer";
 import { LineAsset, type LineName } from "@/components/line-asset";
 
@@ -32,8 +31,6 @@ export default function Page() {
           <Divider name="s-curve" />
           <Beyond />
           <Skills />
-          <Divider name="halftone-divider" />
-          <References />
         </div>
       </main>
       <SiteFooter />

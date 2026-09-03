@@ -30,7 +30,6 @@ export interface SiteContent {
       work: string;
       projects: string;
       skills: string;
-      references: string;
     };
     downloadCv: string;
     languageSwitchLabel: string;
@@ -85,13 +84,6 @@ export interface SiteContent {
     title: string;
     groups: { label: string; items: string[] }[];
   };
-  references: {
-    index: string;
-    label: string;
-    title: string;
-    intro: string;
-    items: { name: string; roleCompany: string; linkedin: string }[];
-  };
   footer: {
     heading: string;
     subheading: string;
@@ -134,7 +126,6 @@ export const content: Record<Locale, SiteContent> = {
         work: "Work",
         projects: "Projects",
         skills: "Skills",
-        references: "References",
       },
       // GUIDE: Label for the solid blue CV button in the nav.
       downloadCv: "Download CV",
@@ -412,33 +403,6 @@ export const content: Record<Locale, SiteContent> = {
       ],
     },
 
-    references: {
-      // GUIDE: Section index (monospace, two digits).
-      index: "05",
-      // GUIDE: Section label.
-      label: "References",
-      // GUIDE: Section heading.
-      title: "References",
-      // GUIDE: One line — people who have worked with you and agreed to be a reference.
-      intro:
-        "People I've worked with who have agreed to speak to it. Reach out and I'll connect you.",
-      // GUIDE: 3–5 entries. name + roleCompany (shown muted) + linkedin URL. No photos, no quotes.
-      items: [
-        {
-          // GUIDE: replace with a real name + LinkedIn URL
-          name: "Add a reference",
-          roleCompany: "Role, Company",
-          linkedin: "https://www.linkedin.com/in/",
-        },
-        {
-          // GUIDE: replace with a real name + LinkedIn URL
-          name: "Add a reference",
-          roleCompany: "Role, Company",
-          linkedin: "https://www.linkedin.com/in/",
-        },
-      ],
-    },
-
     footer: {
       // GUIDE: Footer heading — the invitation to go deeper.
       heading: "Want the full story?",
@@ -488,7 +452,6 @@ export const content: Record<Locale, SiteContent> = {
         work: "Deneyim",
         projects: "Projeler",
         skills: "Yetenekler",
-        references: "Referanslar",
       },
       // GUIDE: Nav'daki mavi CV butonunun etiketi.
       downloadCv: "CV'yi İndir",
@@ -762,33 +725,6 @@ export const content: Record<Locale, SiteContent> = {
             "İşe alım & performans geri bildirimi",
             "Çapraz fonksiyonlu koordinasyon",
           ],
-        },
-      ],
-    },
-
-    references: {
-      // GUIDE: Bölüm numarası (monospace, iki hane).
-      index: "05",
-      // GUIDE: Bölüm etiketi.
-      label: "Referanslar",
-      // GUIDE: Bölüm başlığı.
-      title: "Referanslar",
-      // GUIDE: Tek satır — seninle çalışmış ve referans olmayı kabul eden kişiler.
-      intro:
-        "Birlikte çalıştığım ve konuşmayı kabul eden kişiler. Bana yazın, sizi tanıştırayım.",
-      // GUIDE: 3–5 kayıt. ad + roleCompany (soluk gösterilir) + linkedin adresi. Fotoğraf yok, alıntı yok.
-      items: [
-        {
-          // GUIDE: gerçek bir ad + LinkedIn adresiyle değiştir
-          name: "Referans ekle",
-          roleCompany: "Unvan, Şirket",
-          linkedin: "https://www.linkedin.com/in/",
-        },
-        {
-          // GUIDE: gerçek bir ad + LinkedIn adresiyle değiştir
-          name: "Referans ekle",
-          roleCompany: "Unvan, Şirket",
-          linkedin: "https://www.linkedin.com/in/",
         },
       ],
     },

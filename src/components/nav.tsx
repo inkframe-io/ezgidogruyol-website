@@ -7,7 +7,7 @@ import { useLocale } from "@/lib/locale-context";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
-const SECTION_IDS = ["about", "work", "projects", "skills", "references"] as const;
+const SECTION_IDS = ["about", "work", "projects", "skills"] as const;
 type SectionId = (typeof SECTION_IDS)[number];
 
 export function Nav() {
@@ -21,7 +21,6 @@ export function Nav() {
     { id: "work", label: t.meta.nav.work },
     { id: "projects", label: t.meta.nav.projects },
     { id: "skills", label: t.meta.nav.skills },
-    { id: "references", label: t.meta.nav.references },
   ];
 
   // Track the section currently in the reading zone.
