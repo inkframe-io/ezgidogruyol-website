@@ -34,6 +34,7 @@ export function LineAsset({
   return (
     <span
       aria-hidden="true"
+      style={flow ? undefined : { width }}
       className={cn(
         "pointer-events-none select-none opacity-70",
         flow ? "block" : "absolute",

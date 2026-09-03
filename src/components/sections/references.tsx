@@ -20,7 +20,7 @@ export function References() {
       <CharacterAsset
         name="user-interview"
         size={185}
-        className="hidden xl:block xl:-right-56 xl:-top-4 2xl:-right-72"
+        className="hidden xl:block xl:-right-48 xl:-top-4 2xl:-right-72"
       />
       <SectionHeading
         id="references-heading"

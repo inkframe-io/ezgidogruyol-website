@@ -29,7 +29,7 @@ export function About() {
       <CharacterAsset
         name="neutral-laptop"
         size={180}
-        className="hidden xl:block xl:-right-56 xl:top-2 2xl:-right-72"
+        className="hidden xl:block xl:-right-48 xl:top-2 2xl:-right-72"
       />
       <SectionHeading
         id="about-heading"

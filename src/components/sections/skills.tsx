@@ -29,7 +29,7 @@ export function Skills() {
       <CharacterAsset
         name="prioritization"
         size={180}
-        className="hidden xl:block xl:-left-56 xl:top-[34%] 2xl:-left-72"
+        className="hidden xl:block xl:-left-48 xl:top-[34%] 2xl:-left-72"
       />
       <SectionHeading
         id="skills-heading"

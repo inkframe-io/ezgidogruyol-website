@@ -39,7 +39,7 @@ export function Work() {
       <CharacterAsset
         name="kanban-planning"
         size={180}
-        className="hidden xl:block xl:-left-56 xl:top-0 2xl:-left-72"
+        className="hidden xl:block xl:-left-48 xl:top-0 2xl:-left-72"
       />
       <SectionHeading
         id="work-heading"

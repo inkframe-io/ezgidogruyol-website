@@ -23,9 +23,9 @@ export type DoodleName =
 
 type DoodleAssetProps = {
   name: DoodleName;
-  /** Positioning / sizing utilities. Size via width/height classes (e.g. w-28). */
+  /** Positioning utilities. */
   className?: string;
-  /** Rendered pixel box (square source tiles ~314px). Keep small — decorative. */
+  /** Rendered width in px (square source tiles are ~314px — keep small). */
   size?: number;
 };
 
@@ -37,6 +37,7 @@ export function DoodleAsset({ name, className, size = 130 }: DoodleAssetProps) {
   return (
     <span
       aria-hidden="true"
+      style={{ width: size }}
       className={cn(
         "pointer-events-none absolute select-none opacity-90",
         className

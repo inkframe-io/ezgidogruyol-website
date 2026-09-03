@@ -55,7 +55,7 @@ export function SiteFooter() {
         <CharacterAsset
           name="friendly-wave"
           size={180}
-          className="hidden xl:block xl:-right-56 xl:bottom-0 2xl:-right-72"
+          className="hidden xl:block xl:-right-48 xl:bottom-0 2xl:-right-72"
         />
         <Reveal>
           <h2 className="text-2xl font-bold tracking-tight text-fg sm:text-3xl">

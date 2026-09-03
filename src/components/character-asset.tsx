@@ -17,7 +17,8 @@ type CharacterAssetProps = {
   name: CharacterName;
   /** Positioning / sizing utilities. */
   className?: string;
-  /** Rendered pixel box (square-ish source ~420–460px). */
+  /** Rendered width in px. Drives the box when absolutely positioned; when
+   * `flow` is set, size the element with width classes instead. */
   size?: number;
   /** In-flow (hero) vs absolutely positioned margin decoration (default). */
   flow?: boolean;
@@ -39,6 +40,7 @@ export function CharacterAsset({
   return (
     <span
       aria-hidden="true"
+      style={flow ? undefined : { width: size }}
       className={cn(
         "pointer-events-none select-none",
         flow ? "block" : "absolute",
