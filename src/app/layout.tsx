@@ -31,6 +31,11 @@ export const metadata: Metadata = {
     siteName: meta.name,
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${meta.name} — ${meta.role}`,
+    description: meta.description,
+  },
   alternates: { canonical: "/" },
 };
 
